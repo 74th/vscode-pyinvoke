@@ -10,14 +10,95 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:pyinvoke.helloWorld"
+    "workspaceContains:**/tasks.py",
+    "workspaceContains:**/tasks/__init__.py"
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
+    "taskDefinitions": [
       {
-        "command": "pyinvoke.helloWorld",
-        "title": "Hello World"
+        "type": "pyinvoke",
+        "required": [
+          "task"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "invoke path"
+          },
+          "cwd": {
+            "type": "string",
+            "description": "directory invoke",
+            "default": "${workspaceFolder}"
+          },
+          "configuration": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "configuration path (-f)",
+            "default": null
+          },
+          "coreOpts": {
+            "type": [
+              "array",
+              "string",
+              "null"
+            ],
+            "description": "core opts (-e, -r...)",
+            "default": null
+          },
+          "echo": {
+            "type": [
+              "boolean"
+            ],
+            "description": "enable echo (-e)",
+            "default": false
+          },
+          "task": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "tasks and task options"
+          }
+        }
+      }
+    ],
+    "configuration": [
+      {
+        "title": "pyinvoke",
+        "properties": {
+          "pyinvoke.path": {
+            "type": "string",
+            "default": "invoke",
+            "description": "invoke command path"
+          },
+          "pyinvoke.configuration": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": null,
+            "description": "configuration -f"
+          },
+          "pyinvoke.coreOps": {
+            "type": [
+              "array",
+              "string",
+              "null"
+            ],
+            "default": null,
+            "description": "core ops (-e -r...)"
+          },
+          "echo": {
+            "type": [
+              "boolean"
+            ],
+            "description": "enable echo (-e)",
+            "default": false
+          }
+        }
       }
     ]
   },

@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "pyinvoke",
+      "task": "task1",
+      "label": "pyinvoke: task",
+      "configuration": "./invoke_conf.yaml"
+    }
+  ]
+}
